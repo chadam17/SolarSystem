@@ -1,0 +1,401 @@
+/* declaro la disposición general de la página, en mi caso he puesto un ancho máximo porque mi pc tiene la pantalla diminuta, y al visualizarlo en monitores con distinta resolución me interesa que se mantenga la disposición original para facilitar la lectura y la interacción con los elementos de la página. */
+* {
+	max-width: 900px;
+	padding: 5px;	
+	margin: 0px auto;
+	display: responsive;
+	text-align: justify;
+}
+/* el menú desplegable se muestra a continuación del header, y los elementos del submenú no podrán verse inicialmente */
+.menu {
+	margin-top: 0px;
+}
+
+.menu li {
+	list-style: none;
+}
+
+/* alineación de los elementos del menú de manera horizontal, detallando el tipo de letra y color de fondo, etc. */		
+.item {
+	float: left;
+	background-color: black;
+	color: white;
+	padding: 19px;
+	display: block;
+	font-family: ubuntu;	
+	margin-top: 0px;
+	margin-bottom: 0px;	
+}
+/* los elementos del menú reaccionarán si el usuario coloca el puntero del ratón sobre ellos, cambiando su color de fondo a un tono fucsia luminoso mediante la propiedad de sombreado, y se añade además un subrayado del nombre del elemento destino. */
+.item:hover {
+	background-color: #f20822;
+	color: white;
+	text-decoration: underline;
+	-webkit-box-shadow: 0px 0px 10px #f20822, 0px 0px 40px #f20822, 0px 0px 80px #f20822;
+	-moz-box-shadow: 0px 0px 10px #f20822, 0px 0px 40px #f20822, 0px 0px 80px #f20822;
+	-o-box-shadow: 0px 0px 10px #f20822, 0px 0px 40px #f20822, 0px 0px 80px #f20822;
+	-ms-box-shadow: 0px 0px 10px #f20822, 0px 0px 40px #f20822, 0px 0px 80px #f20822;
+}
+/* alineación de los elementos del submenú, detallando el tipo de letra y color de fondo, etc. */
+.item2 {
+	float: left;
+	background-color: black;
+	color: white;
+	padding: 19px;
+	display: block;
+	font-family: ubuntu;	
+	margin-top: 0px;
+	margin-bottom: 0px;	
+	-moz-box-shadow: 7px 7px 7px 7px black;
+	-webkit-box-shadow: 7px 7px 7px 7px black;
+	-o-box-shadow: 7px 7px 7px 7px black;
+	-ms-box-shadow: 7px 7px 7px 7px black;
+}
+/* los elementos del submenú reaccionarán si el usuario coloca el puntero del ratón sobre ellos, cambiando su color de fondo a un tono fucsia luminoso mediante la propiedad de sombreado, y se añade además un subrayado del nombre del elemento destino. */
+.item2:hover {
+	background-color: #f20822;
+	color: white;
+	text-decoration: underline;
+	-webkit-box-shadow: 0px 0px 10px #f20822, 0px 0px 40px #f20822, 0px 0px 80px #f20822;
+	-moz-box-shadow: 0px 0px 10px #f20822, 0px 0px 40px #f20822, 0px 0px 80px #f20822;
+	-o-box-shadow: 0px 0px 10px #f20822, 0px 0px 40px #f20822, 0px 0px 80px #f20822;
+	-ms-box-shadow: 0px 0px 10px #f20822, 0px 0px 40px #f20822, 0px 0px 80px #f20822;
+}
+/* me aseguro de que el submenú mantenga su posición invariable una vez se muestra desplegado y no desplaza al resto de elementos de la página*/
+.desplegar {
+	display: none; 
+	position: absolute;
+	padding: 19px;
+	max-width: 100px;
+	margin-left: -1.9%;
+}
+/* añado una disposición en bloque al submenú seleccionado y un difuminado del fondo, de modo que se transparenta lo que queda detrás del submenú. Podremos visualizar este efecto desde que se despliega el submenú posicionando el puntero sobre el menú */
+.menu .item:hover .desplegar {
+	display: block;
+	background-color: rgba(0,0,0,0.7);
+	
+}
+/* añado una disposición en bloque al submenú seleccionado y un difuminado del fondo, de modo que se transparenta lo que queda detrás del submenú. De este modo se mantiene el difuminado declarado anteriormente al poner el puntero sobre el encabezado del menú*/
+.menu .item2:hover .desplegar {
+	display: block;
+	background-color: rgba(0,0,0,0.7);
+	
+}
+/* selecciono una imagen de Internet como fondo de página, que estará rodeando el contenido de la misma. Es un cielo nocturno estrellado que por la resolución de imagen, la propiedad de no-repeat para que no se repita varias veces la imagen y ocupe toda la superficie una sola imagen no me ha funcionado, aunque quise arreglarlo mediante contain como tamaño de imagen*/
+body {
+	background-image: url(https://images.unsplash.com/photo-1544030834-45f2dcb88b4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+	background-image: no-repeat;
+	background-size: contain;
+	/*background-size: 100% 100%*/
+}
+/*defino el contenedor maquetado con flexbox para el índice, el estilo de fondo es muy similar al definido para el elemento section, con un degradado de un tono azulado claro desde arriba que se oscurece hasta llegar a negro. Además especifico que ocupe el máximo posible de la página dentro del límite de ancho que definí previamente con el selector universal, y también que los elementos hijos se mostrarán alineados y seguirán más abajo una vez no quepan más en esa fila. Defino algunos estilos más como el borde y el sombreado.*/
+.flex-container {
+	display: flex;
+	justify-content: stretch;
+	flex-flow: row wrap;
+	align-content: baseline;
+	background: -moz-linear-gradient(top,#051c49,black);
+	background: -webkit-linear-gradient(top,#051c49,black);
+	background: -o-linear-gradient(top,#051c49,black);
+	background: -ms-linear-gradient(top,#051c49,black);  
+	padding: 10px;
+	border: 3px solid black;
+	border-top: 1.5px;
+	-moz-box-shadow: 10px 10px black;
+	-webkit-box-shadow: 10px 10px black;
+	-o-box-shadow: 10px 10px black;
+	-ms-box-shadow: 10px 10px black;
+	margin: 10px;	
+	margin-top: 0px;
+	margin-bottom: 5%;
+}
+/* propiedades de los elementos hijos del contenedor maquetado con flex. Se detalla su tamaño, fuente y color de fondo (turquesa), etc */
+.flex-container div {
+	background-color: #17fab0;
+	padding: 10px;
+	width: 18%;
+	margin: 10px;
+	text-align: bottom;
+	line-height: 75px;
+	font-size: 30px;
+	font-family: ubuntu;
+	font-style: normal;
+	border: 3px solid #0ab2d2;
+}
+/* los enlaces contenidos en cada item del contenedor flex tendrán texto negro sin estilos iniciales por defecto*/
+.flex-container div a {
+	color: black;
+	text-decoration: none;
+}
+/* el color de fondo de los items del contenedor flex varía del turquesa inicial a un azul cian al colocar el puntero del ratón sobre ellos*/
+.flex-container div:hover { 
+	background-color: #055ff9; 
+	border: 3px solid #055ff9;
+}
+/* el texto del contenedor flex seleccionado con el puntero del ratón se muestra subrayado y cambia de color negro a blanco */
+.flex-container div a:hover {
+	color: white;
+	text-decoration: underline;
+}
+/* creo una pequeña tabla para mostrar el apartado de características principales del cuerpo celeste cuya página se está visualizando*/
+table, td {
+	border: 3px solid black;
+  	border-collapse: collapse;
+	padding: 8px;
+	font-size: 15px;	
+	font-family: ubuntu;
+	margin-top: 35px;
+	margin-left: 10px;	
+	margin-bottom: 35px;
+}
+/*la columna izquierda de la tabla tendrá un fondo naranja rojizo y color de fuente blanco*/
+.tabla1 {
+	background-color: #fa3410;
+	color: white;
+}
+/*la columna derecha de la tabla tendrá un fondo blanco y el texto se alineará a la derecha con la finalidad de facilitar la lectura*/
+.tabla2 {
+	background-color: white;
+	text-align: right;
+}
+/* defino el diseño del botón ubicado en el extremo inferior derecho de la página, el cúal nos devuelve de regreso al índice si hacemos clic sobre el mismo*/
+.inicio {
+	border: black 3px solid;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	background-color: #055ff9;
+	font-size: 15px;
+	font-family:"ubuntu"; 
+	margin: 10px;
+	padding: 10px;
+	margin-left: 57%;
+	margin-right: 0px;
+	text-decoration: none;
+	outline: none;	
+	color: white;
+}	
+/* si colocamos el puntero del ratón sobre el botón de regreso al índice, éste brillará con su tono azul por defecto a modo de iluminación*/
+.inicio:hover {
+	background-color: #055ff9;
+	box-shadow: 0px 0px 10px #055ff9, 0px 0px 40px #055ff9, 0px 0px 80px #055ff9;
+	border: #055ff9 3px solid;
+}
+/*las imágenes contenidas en la página tendrán un borde azul, el resto de estilos están en las respectivas etiquetas en el propio html*/
+img {
+	border: blue 3px groove;
+	margin: 0px;
+	padding: 0px;
+}
+/*el texto resaltado en negrita, que será el nombre de cada apartado de información de cada astro, se mostrará en un recuadro azul oscuro y llevará una sombra de texto negra */
+b {
+	font-size: 18px;
+	font-family:"ubuntu";
+	color: white;	
+	text-shadow: 1px 1px #000000;
+	border: black 3px solid;
+	background-color: #010a18;
+	margin: 5px;
+	padding: 8px;
+	margin-top: 20px; 	
+}
+/*el recuadro con texto en negrita del índice será muy similar al anterior, apenas cambia el color del sombreado del texto y el grosor del borde*/
+.b2 {
+	font-size: 18px;
+	font-family:"ubuntu";
+	color: white;
+	text-shadow: 1px 1px #888888;
+	border: black 4px solid;
+	background-color: #010a18;
+	margin: 5px;
+	padding: 8px;
+	margin-top: 20px;	
+}
+/* defino los márgenes de la segunda imagen de cada página*/
+.second {
+	margin-right: 20px;
+	margin-bottom: 20px;
+	margin-left: 25px;
+}
+/*simplemente creo un pequeño espacio entre el contenido textual de cada página y la tabla, para evitar que se me descuadre la parte de debajo*/
+.separado {
+	margin-top: 5px;
+	padding: 0px;
+}
+/*defino el margen y espaciado del contenido de los párrafos de la página*/
+p {
+	margin: 15px;
+	padding: 15px;
+}
+/*por defecto el texto de los enlaces será blanco y sin estilos adicionales*/
+a:link {color: #ffffff; text-decoration: none;}
+/*NOTA: mi intención era mostrar un color de texto diferente para los enlaces visitados, pero se me mostraba el estilo en todos independientemente de si habían sido clicados o no, de modo que he optado por dejarlos como estaban*/
+a:visited {color: white;}
+/*alrededor del texto de enlace que tiene encima el puntero del ratón se verá el fondo iluminado de rosa intenso, además de añadirse subrayado al texto de enlace*/
+.desplegar a:hover {
+	background-color: #f20822;
+	color: white;
+	text-decoration: underline;
+	-webkit-box-shadow: 0px 0px 10px #f20822, 0px 0px 40px #f20822, 0px 0px 80px #f20822;
+	-moz-box-shadow: 0px 0px 10px #f20822, 0px 0px 40px #f20822, 0px 0px 80px #f20822;
+	-o-box-shadow: 0px 0px 10px #f20822, 0px 0px 40px #f20822, 0px 0px 80px #f20822;
+	-ms-box-shadow: 0px 0px 10px #f20822, 0px 0px 40px #f20822, 0px 0px 80px #f20822;
+}
+
+a:focus {color: #ffffff;outline: #ffffff;}
+
+a:active {color: white;background-color: blue;}
+/*me aseguro que el contenedor div del body no exceda de unos límites de margen y ancho determinados*/
+.wrapper {
+	width: 720px	
+	margin-left: auto;
+	margin-right: auto;
+}
+/*defino las características del encabezado de cada página. Entre otros aspectos, llevará una imagen de fondo que muestra una representación artística del horizonte de la Tierra desde el espacio exterior, que ocupará todo el espacio disponible. Presentará a su vez doble borde superior y sombra acorde a la fuente de luz, y un tamaño de fuente mayor al resto de texto de la página*/
+#header {
+	background-image: url(espacio6.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	font-size: 20px;
+	font-family:"ubuntu";
+	color: #ffffff; 
+	border: black 5px solid;
+	-moz-border-radius: 40px 40px 0px 0px;
+	-webkit-border-radius: 40px 40px 0px 0px;
+	-o-border-radius: 40px 40px 0px 0px;
+	-ms-border-radius: 40px 40px 0px 0px;
+	padding: 30px;
+	margin-top: 5%;
+	margin-bottom: 0px;
+	margin-right: 30px;
+	margin-left: 10px;
+	text-shadow: 4px 4px #000000;
+	-moz-box-shadow: 10px 10px 10px 10px black;
+	-webkit-box-shadow: 10px 10px 10px 10px black;
+	-o-box-shadow: 10px 10px 10px 10px black;
+	-ms-box-shadow: 10px 10px 10px 10px black;
+}
+/*el encabezado superior del índice es idéntico al de cada página individual, excepto porque reduzco brevemente la sombra para ajustarla a la del resto de elementos del índice*/
+.header2 {
+	background-image: url(espacio6.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	font-size: 20px;
+	font-family:"ubuntu";
+	color: #ffffff; 
+	border: black 5px solid;
+	-moz-border-radius: 40px 40px 0px 0px;
+	-webkit-border-radius: 40px 40px 0px 0px;
+	-o-border-radius: 40px 40px 0px 0px;
+	-ms-border-radius: 40px 40px 0px 0px;
+	padding: 30px;
+	margin-top: 5%;
+	margin-bottom: 0px;
+	margin-right: 3px;
+	margin-left: 2px;
+	text-shadow: 4px 4px #000000;
+	-moz-box-shadow: 8px 8px 8px 8px black;
+	-webkit-box-shadow: 8px 8px 8px 8px black;
+	-o-box-shadow: 8px 8px 8px 8px black;
+	-ms-box-shadow: 8px 8px 8px 8px black;
+}
+/*defino color de fuente blanco y el fondo negro para la barra de navegación*/
+.nav {
+	background-color: rgb(255,255,255,0);
+	font-size: 12px;	
+	font-family:"ubuntu";
+	color: #FFFFFF;
+	margin: 0px auto;	
+}
+/*estilos del contenedor principal de la información de la página. Muestra sombra lateral derecha e inferior y un degradado de azul cian a negro que se une visualmente con el footer. Defino todos los márgenes y el espaciado del texto, el cuál se verá justificado como declaré mediante el selector universal*/
+.section {
+	background-color: #024D74; 
+	display: inline-block;
+	background: -moz-linear-gradient(top,#024D74,rgb(0,0,0));
+	background: -webkit-linear-gradient(top,#024D74,rgb(0,0,0));
+	background: -o-linear-gradient(top,#024D74,rgb(0,0,0));   
+	background: -ms-linear-gradient(top,#024D74,rgb(0,0,0)); 
+	font-size: 16px;
+	font-family:"ubuntu";
+	color: #FFFFFF;
+	border: black 3px solid;
+	border-bottom: black 3px solid;
+	margin-top: 0px; 
+	margin-bottom: 0px;
+	margin-right: 25px;
+	margin-left: 10px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	position: auto;
+	-moz-box-shadow: 7px 7px 7px 7px black;
+	-webkit-box-shadow: 7px 7px 7px 7px black;
+	-o-box-shadow: 7px 7px 7px 7px black;
+	-ms-box-shadow: 7px 7px 7px 7px black;
+}
+/*para el contenedor del mensaje de bienvenida al website, defino estilos similares al del resto de páginas y el catálogo de astros, pero variando el degradado y color de fondo a unos tonos suaves cálidos con cierta difuminación, de modo que alcanzamos a apreciar el cielo estrellado de fondo. A su vez aumento la sombra para ajustarla al resto de sombras del resto de elementos del índice*/
+.section2 {
+	background-color: #f22108; 
+	display: inline-block;
+	background: -moz-linear-gradient(top,rgba(247,26,16,0.6),rgba(230,87,2,0.6));
+	background: -webkit-linear-gradient(top,rgba(247,26,16,0.6),rgba(230,87,2,0.6));
+	background: -o-linear-gradient(top,rgba(247,26,16,0.6),rgba(230,87,2,0.6));   
+	background: -ms-linear-gradient(top,rgba(247,26,16,0.6),rgba(230,47,2,0.6)); 
+	font-size: 16px;
+	font-family:"ubuntu";
+	color: #FFFFFF;
+	border: black 3px solid;
+	border-bottom: black 3px solid;
+	margin-top: 0px; 
+	margin-bottom: 10px;
+	position: auto;
+	-moz-box-shadow: 10px 10px black;
+	-webkit-box-shadow: 10px 10px black;
+	-o-box-shadow: 10px 10px black;
+	-ms-box-shadow: 10px 10px black;
+}
+/*el encabezado del catálogo del índice será muy parecido al header, pero en lugar de imagen de fondo sencillamente agrego un tono azul marino*/
+.h2 {
+	background-color: #010a18;
+	font-size: 20px;
+	font-family:"ubuntu";
+	font-style: normal;
+	color: #ffffff; 
+	border: black 4px solid;
+	-moz-border-radius: 40px 40px 0px 0px;
+	-webkit-border-radius: 40px 40px 0px 0px;
+	-o-border-radius: 40px 40px 0px 0px;
+	-ms-border-radius: 40px 40px 0px 0px;
+	padding: 20px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 10px;
+	margin-right: 10px;
+	-moz-box-shadow: 10px 10px black;
+	-webkit-box-shadow: 10px 10px black;
+	-o-box-shadow: 10px 10px black;
+	-ms-box-shadow: 10px 10px black;
+}
+/*la cita del mensaje de bienvenida se sitúa más a la derecha que el resto del texto introductorio, y la fuente será cursiva o itálica*/
+i {
+	margin-left: 35%;
+}
+/* defino los estilos del pie de página, el cúal va a parecer que está fusionado al elemento section o contenedor principal de la información de cada página, de modo que visualmente no se va a apreciar el límite entre ambos, la razón es que me parece más adecuado a nivel estético. El estilo más relevante del footer es el margen inferior, que al igual que el margen superior del header será invariable independientemente del tamaño y resolución del monitor, mediante el uso de % en lugar de px*/
+.footer {
+	background-color: black;
+	font-size: 16px;
+	font-family:"ubuntu";
+	color: #FFFFFF;
+	border: black 3px solid;
+	padding: 10px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	margin-bottom: 5%;
+	margin-top: 0px;
+	margin-right: 25px;
+	margin-left: 10px;
+	-moz-box-shadow: 7px 7px 7px 7px black;
+	-webkit-box-shadow: 7px 7px 7px 7px black;
+	-o-box-shadow: 7px 7px 7px 7px black;
+	-ms-box-shadow: 7px 7px 7px 7px black;
+}
